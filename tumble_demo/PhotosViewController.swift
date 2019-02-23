@@ -45,14 +45,10 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         return posts.count
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
-            print("A")
         let post = posts[indexPath.row]
         if let photos = post["photos"] as? [[String: Any]] {
-            print("worked to fetch photo url")
             let photo = photos[0]
             let originalSize = photo["original_size"] as! [String: Any]
             let urlString = originalSize["url"] as! String
@@ -60,6 +56,26 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
             cell.photoImageView.af_setImage(withURL: url!)
         }
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //pass the selected movie to the details screen
+        
+        let detailsViewController = segue.destination as! PhotoDetailsViewController
+        
+        let cell = sender as! PhotoCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let post = posts[indexPath.row]
+        //let photos = post["photos"]
+        if let photos = post["photos"] as? [[String: Any]] {
+            let photo = photos[0]
+            let originalSize = photo["original_size"] as! [String: Any]
+            let urlString = originalSize["url"] as! String
+            detailsViewController.url = URL(string: urlString)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
     }
     
 
