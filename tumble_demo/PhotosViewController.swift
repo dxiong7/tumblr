@@ -73,9 +73,9 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         profileView.af_setImage(withURL: URL(string: "https://api.tumblr.com/v2/blog/humansofnewyork.tumblr.com/avatar")!)
         headerView.addSubview(profileView)
         
-        let label = UILabel(frame: CGRect(x: 50, y: 0, width: 320, height: 50))
-        label.font = UIFont(name: "HelveticaNeue", size: 18)
-        label.text = "date goes here"
+        //let label = UILabel(frame: CGRect(x: 50, y: 0, width: 320, height: 50))
+        //label.font = UIFont(name: "HelveticaNeue", size: 18)
+        //label.text = "date goes here"
         /*let label = UILabel(frame: CGRect(x: 50, y: 0, width: 320, height: 50))
         label.font = UIFont(name: "HelveticaNeue", size: 18)
         let cell = tableView.dequeueReusableCell(withIdentifier: "PhotoCell", for: indexPath) as! PhotoCell
@@ -87,7 +87,7 @@ class PhotosViewController: UIViewController, UITableViewDataSource, UITableView
         // Add a UILabel for the date here
         // Use the section number to get the right URL
 
-        headerView.addSubview(label)
+        //headerView.addSubview(label)
         
         return headerView
     }
